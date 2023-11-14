@@ -1,6 +1,8 @@
 # New Relic Kubernetes Operator from AWS Marketplace
 
-This document shows the steps required to use EKS AddOn from AWS Marketplace
+This document shows the steps required to use EKS AddOn from AWS Marketplace.
+
+**NOTE : This addon is currently supported only on X86 instance types and the support for ARM64 architecture type is coming soon**
 
 ## Pre-Requisites
 
