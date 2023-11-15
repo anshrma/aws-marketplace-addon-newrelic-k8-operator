@@ -7,7 +7,7 @@ This document shows the steps required to use EKS AddOn from AWS Marketplace.
 ## Pre-Requisites
 
 1. [Amazon Elastic Kubernetes Service (EKS)](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html) Cluster. See the userguide [here](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
-2. A valid [New Relic](https://konghq.com/products/kong-konnect). You can subscribe to New Relic from AWS Marketplace with Free Tier. See details [here](https://aws.amazon.com/marketplace/pp/prodview-ov56chowabeb4?sr=0-3&ref_=beagle&applicationId=AWS-Marketplace-Console)
+2. A valid [New Relic](https://one.newrelic.com/). You can subscribe to New Relic from AWS Marketplace with Free Tier. See details [here](https://aws.amazon.com/marketplace/pp/prodview-ov56chowabeb4?sr=0-3&ref_=beagle&applicationId=AWS-Marketplace-Console)
 3. Subscribe to [New Relic Kubernetes Integration](https://aws.amazon.com/marketplace/pp/prodview-gcywa6keq2ajy?applicationId=AWS-Marketplace-Console&ref_=beagle&sr=0-5), available for free
 4. Login to [New Relic](https://one.newrelic.com/) and generate a [License Key](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher)
 
@@ -68,7 +68,7 @@ Output will be similar to following
 
 You may confirm the Kubernetes Operator `Running` by executing `kubectl get all -n newrelic`. 
 
-To start collecting metrics and ship to New Relic, use the following sample Custom Resource Definition (CRD)
+To start collecting metrics and ship to New Relic, use the following sample Custom Resource Definition (CRD). Save the contents of the CRD in `newrelic-bundle.yaml` and apply using `kubectl apply -f newrelic-bundle.yaml`
 
 ```
 apiVersion: newrelic.com/v1alpha1
@@ -89,3 +89,5 @@ Where
 
 `spec.global.cluster` : Name of your EKS Cluster
 `spec.global.licensekey`: Your New Relic License Key that you generated at step-4 in the Pre-Requisites above.
+
+To delete the CRD and stop collecting the data, run `kubectl delete -f newrelic-bundle.yaml`
